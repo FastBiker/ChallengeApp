@@ -1,6 +1,7 @@
 ﻿int number = 546879879;
 string numberAsString = number.ToString();
 char[] letters = numberAsString.ToCharArray();
+
 int[] counter = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 foreach (char letter in letters)
@@ -45,13 +46,14 @@ foreach (char letter in letters)
     {
         counter[9]++;
     }
-    Console.WriteLine("0 =>" + counter[0]);
-    Console.WriteLine("1 =>" + counter[1]);
-    Console.WriteLine("2 =>" + counter[2]);
-    Console.WriteLine("3 =>" + counter[3]);
-    Console.WriteLine("4 =>" + counter[4]);
-    Console.WriteLine("5 =>" + counter[5]);
-    Console.WriteLine("6 =>" + counter[6]);
-    Console.WriteLine("7 =>" + counter[7]);
-    Console.WriteLine("8 =>" + counter[8]);
-    Console.WriteLine("9 =>" + counter[9]);
+}
+Console.WriteLine("0 =>" + counter[0]);
+Console.WriteLine("1 =>" + counter[1]);
+Console.WriteLine("2 =>" + counter[2]);
+Console.WriteLine("3 =>" + counter[3]);
+Console.WriteLine("4 =>" + counter[4]);
+Console.WriteLine("5 =>" + counter[5]);
+Console.WriteLine("6 =>" + counter[6]);
+Console.WriteLine("7 =>" + counter[7]);
+Console.WriteLine("8 =>" + counter[8]);
+Console.WriteLine("9 =>" + counter[9]);

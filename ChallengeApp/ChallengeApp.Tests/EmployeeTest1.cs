@@ -3,68 +3,51 @@ namespace ChallengeApp.Tests
     public class Tests
     {
         [Test]
-        public void WhenEmployeeCollectTwoScores_ShouldCorrectResult()
+        public void WhenEmployeeCollectGrades_ShouldCorrectMax()
         {
             // arrange
-            var employee = new Employee("Claus", "von Stauffenberg", 37);
-            employee.AddScore(4);
-            employee.AddScore(9);
+            var employee = new Employee("Micha³", "Wo³odyjowski");
+            employee.AddGrade(4);
+            employee.AddGrade(9);
+            employee.AddGrade(2);
 
             // act
-            var result = employee.Result;
+            var statistics = employee.GetStatistics();
 
             // assert
-            Assert.AreEqual(13, result);
+            Assert.AreEqual(9, statistics.Max);
         }
         [Test]
-        public void WhenEmployeeCollectThreeScores_ShouldCorrectResult()
+        public void WhenEmployeeCollectGrades_ShouldCorrectMin()
         {
             // arrange
-            var employee = new Employee("Heinrich", "von Lehndorff", 35);
-            employee.AddScore(7);
-            employee.AddScore(-4);
-            employee.AddScore(9);
+            var employee = new Employee("Jan", "Sobieski");
+            employee.AddGrade(7);
+            employee.AddGrade(-4);
+            employee.AddGrade(9);
 
             // act
-            var result = employee.Result;
+            var statistics = employee.GetStatistics();
 
             // assert
-            Assert.AreEqual(12, result);
+            Assert.AreEqual(-4, statistics.Min);
         }
         [Test]
-        public void WhenEmployeeCollectFiveScores_ShouldCorrectResult()
+        public void WhenEmployeeCollectGrades_ShouldCorrectAverage()
         {
             // arrange
-            var employee = new Employee("Erwin", "Rommel", 53);
-            employee.AddScore(-5);
-            employee.AddScore(-6);
-            employee.AddScore(4);
-            employee.AddScore(4);
-            employee.AddScore(9);
+            var employee = new Employee("Azja", "Tuhajbejowicz");
+            employee.AddGrade(9);
+            employee.AddGrade(4);
+            employee.AddGrade(-3);
+            employee.AddGrade(-5);
+            employee.AddGrade(-6);
 
             // act
-            var result = employee.Result;
+            var statistics = employee.GetStatistics();
 
             // assert
-            Assert.AreEqual(6, result);
+            Assert.AreEqual(-0.2f, statistics.Average);
         }
-        [Test]
-        public void WhenEmployeeCollectFiveNegativeScores_ShouldCorrectResult()
-        {
-            // arrange
-            var employee = new Employee("Martin", "Bormann", 45);
-            employee.AddScore(-3);
-            employee.AddScore(-5);
-            employee.AddScore(-7);
-            employee.AddScore(-2);
-            employee.AddScore(-8);
-
-            // act
-            var result = employee.Result;
-
-            // assert
-            Assert.AreEqual(-25, result);
-        }
-
     }
 }

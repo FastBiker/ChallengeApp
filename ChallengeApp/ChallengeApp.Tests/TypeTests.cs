@@ -3,56 +3,51 @@
     public class TypeTests
     {
         [Test]
-        public void TwoNameOfCitiesShouldDefferent()
+        public void WhenEmployeeCollectGrades_ShouldCorrectMax()
         {
             // arrange
-            string city1 = "Warszawa";
-            string city2 = "Kraków";
+            var employee = new Employee("Michał", "Wołodyjowski");
+            employee.AddGrade(4);
+            employee.AddGrade(9);
+            employee.AddGrade(2);
 
             // act
-            // assert
-            Assert.AreNotEqual(city1, city2);
-        }
+            var statistics = employee.GetStatistics();
 
+            // assert
+            Assert.AreEqual(9, statistics.Max);
+        }
         [Test]
-        public void TwoFloatingPointNumbersShouldDefferent()
+        public void WhenEmployeeCollectGrades_ShouldCorrectMin()
         {
             // arrange
-            float number3 = 67.98f;
-            float number4 = 0.5746362f;
+            var employee = new Employee("Jan", "Sobieski");
+            employee.AddGrade(7);
+            employee.AddGrade(-4);
+            employee.AddGrade(9);
 
             // act
-            // assert
-            Assert.AreNotEqual(number3, number4);
-        }
+            var statistics = employee.GetStatistics();
 
+            // assert
+            Assert.AreEqual(-4, statistics.Min);
+        }
         [Test]
-        public void TwoNaturalNumbersShouldDefferent()
+        public void WhenEmployeeCollectGrades_ShouldCorrectAverage()
         {
             // arrange
-            int number1 = 16;
-            int number2 = 24;
+            var employee = new Employee("Azja", "Tuhajbejowicz");
+            employee.AddGrade(9);
+            employee.AddGrade(4);
+            employee.AddGrade(-3);
+            employee.AddGrade(-5);
+            employee.AddGrade(-6);
 
             // act
+            var statistics = employee.GetStatistics();
+
             // assert
-            Assert.AreNotEqual(number1, number2);
-        }
-
-
-        [Test]
-        public void GetEmployeeShouldReturnDifferentObjects()
-        {
-            // arrange
-            var employee1 = GetEmployee("Piotr","Szczerbaty", 42);
-            var employee2 = GetEmployee("Tomasz", "Wierny", 61);
-
-            // act
-            // assert
-            Assert.AreNotEqual(employee1, employee2);
-        }
-        private Employee GetEmployee(string name, string surname, int age)
-        {
-            return new Employee(name,surname, age);
+            Assert.AreEqual(-0.2f, statistics.Average);
         }
     }
 }

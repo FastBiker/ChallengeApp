@@ -24,15 +24,55 @@ namespace ChallengeApp
                 Console.WriteLine("invalid grade value");
             }          
         }
-        public void AddGrade(string grade)
+        public void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    if (float.TryParse(grade.ToString(), out float result))
+                    {
+                        this.AddGrade(result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Char is not float and letter grade");
+                    }
+                    break;
+            }
+        }
+            public void AddGrade(string grade)
         {
             if(float.TryParse(grade,out float result))
             {
                 this.AddGrade(result);
             }
+            else if(char.TryParse(grade, out char result1))
+            {
+                this.AddGrade(result1);
+            }
             else
             {
-                Console.WriteLine("String is not float");
+                Console.WriteLine("String is not float and letter grade");
             }
         } 
         public void AddGrade(int grade)
@@ -60,17 +100,7 @@ namespace ChallengeApp
             float valueInFloat = (float)grade;
             this.AddGrade(valueInFloat);
         }
-        public void AddGrade(char grade)
-        {
-            if(float.TryParse(grade.ToString(), out float result))
-            {
-                this.AddGrade(result);
-            }
-            else
-            {
-                Console.WriteLine("Char is not flaut");
-            }
-        }    
+            
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
@@ -87,6 +117,24 @@ namespace ChallengeApp
 
             statistics.Average /= this.grades.Count;
 
+            switch(statistics.Average)
+            {
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+            }
             return statistics;
         } 
     }

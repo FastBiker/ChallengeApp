@@ -1,19 +1,24 @@
 ﻿using ChallengeApp;
 
-Employee employee = new Employee("Andrzej", "Kmicic");
+Console.WriteLine("Witamy w Programie 'My best Employees' do oceny Pracowników");
+Console.WriteLine("======================================");
+Console.WriteLine();
 
-employee.AddGrade("3");
-employee.AddGrade('9');
-employee.AddGrade(4f);
-employee.AddGrade("Piotr");
-employee.AddGrade(-10f);
-employee.AddGrade('h');
-employee.AddGrade(16d);
-employee.AddGrade(26L);
-employee.AddGrade(7m);
-employee.AddGrade(33);
+
+var employee = new Employee("Jan", "Skrzetuski");
+
+while(true)
+{
+    Console.WriteLine("Podaj kolejną ocenę pracownika: ");
+    var input = Console.ReadLine();
+    if(input == "q")
+    {
+        break;
+    }
+    employee.AddGrade(input);
+}
 
 var statistics = employee.GetStatistics();
-Console.WriteLine($"Average: {statistics.Average:N3}");
-Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine($"Average: {statistics.Average:N2} => {statistics.AverageLetter}");
 Console.WriteLine($"Min: {statistics.Min}");
+Console.WriteLine($"Max: {statistics.Max}");

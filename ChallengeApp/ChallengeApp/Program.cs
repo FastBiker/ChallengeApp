@@ -1,5 +1,4 @@
 ﻿using ChallengeApp;
-using System.Diagnostics.Metrics;
 
 Console.WriteLine("Witamy w Programie 'My best Employees' do oceny Pracowników");
 Console.WriteLine("======================================");
@@ -11,12 +10,8 @@ Console.WriteLine("You can evaluate your EMPLOYEE, using a number from 0 to 100,
 Console.WriteLine("or using leterrs 'a', 'b', 'c', 'd', 'e' (big or small), where 'a' means the best/highest grade and 'e' the worst/lowest");
 Console.WriteLine("Enter 'q' to recive statistcs of grades");
 Console.WriteLine();
-Console.WriteLine("DYREKTORA możesz ocenić jak pracownika albo stosując tzw. oceny szkolne (6; 6-; -6; 5+; +5; 5 [...] 1+; +1; 1),");
-Console.WriteLine("gdzie '6' oznacza najwyższą ocenę, a '1' najniższą");
-Console.WriteLine("You can evaluate SUPERVISOR like above as employee or using the so-called school grades (6; 6-; -6; 5+; +5; 5 [...] 1+; +1; 1),");
-Console.WriteLine("where '6' means the best/highest grade and '1' the worst/lowest");
 
-var employee = new Employee("Jan", "Skrzetuski", 'M', 34);
+var employee = new EmployeeInFile("Jan", "Skrzetuski", 'M', 34);
 
 while (true)
 {
@@ -43,28 +38,28 @@ Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
 
 
-var supervisor = new Supervisor("Michał", "Korybut-Wiśniowiecki", 'M', 58);
+//var supervisor = new Supervisor("Michał", "Korybut-Wiśniowiecki", 'M', 58);
 
-while (true)
-{
-    Console.WriteLine("Podaj kolejną ocenę dyrektora: ");
-    var input = Console.ReadLine();
-    if (input == "q")
-    {
-        break;
-    }
+//while (true)
+//{
+//    Console.WriteLine("Podaj kolejną ocenę dyrektora: ");
+//    var input = Console.ReadLine();
+//    if (input == "q")
+//    {
+//        break;
+//    }
 
-    try
-    {
-        supervisor.AddGrade(input);
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine($"Exception catched: {e.Message}");
-    }
-}
+//    try
+//    {
+//        supervisor.AddGrade(input);
+//    }
+//    catch (Exception e)
+//    {
+//        Console.WriteLine($"Exception catched: {e.Message}");
+//    }
+//}
 
-var statistics1 = supervisor.GetStatistics();
-Console.WriteLine($"Average: {statistics1.Average:N2} => {statistics1.AverageLetter}");
-Console.WriteLine($"Min: {statistics1.Min}");
-Console.WriteLine($"Max: {statistics1.Max}");
+//var statistics1 = supervisor.GetStatistics();
+//Console.WriteLine($"Average: {statistics1.Average:N2} => {statistics1.AverageLetter}");
+//Console.WriteLine($"Min: {statistics1.Min}");
+//Console.WriteLine($"Max: {statistics1.Max}");

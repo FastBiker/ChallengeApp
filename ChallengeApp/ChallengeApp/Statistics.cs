@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class Statistics
     {

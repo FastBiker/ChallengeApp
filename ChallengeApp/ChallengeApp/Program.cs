@@ -11,7 +11,13 @@ Console.WriteLine("or using leterrs 'a', 'b', 'c', 'd', 'e' (big or small), wher
 Console.WriteLine("Enter 'q' to recive statistcs of grades");
 Console.WriteLine();
 
-var employee = new EmployeeInFile("Jan", "Skrzetuski", 'M', 34);
+var employee = new EmployeeInMemory("Jan", "Skrzetuski", 'M', 34);
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
 
 while (true)
 {
